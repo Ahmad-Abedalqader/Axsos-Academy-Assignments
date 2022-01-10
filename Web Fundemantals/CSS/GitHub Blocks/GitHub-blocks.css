@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: silver;
+    padding: 20px;
+    width: 800px;
+}
+.row1 , .row2 , .row3{
+    display: flex;
+    margin-bottom: 20px;
+    padding: 20px;
+
+}
+.row1{
+    background-color: lightgreen;
+    justify-content: space-between;
+}
+.row2{
+    background-color: plum;
+    justify-content: space-around;
+}
+.row3{
+    background-color: rgb(29, 28, 28);
+    justify-content: space-between;
+}
+img{
+    height: 200px;
+}
