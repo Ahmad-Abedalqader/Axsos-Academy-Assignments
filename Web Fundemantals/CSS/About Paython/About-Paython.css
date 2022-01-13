@@ -148,6 +148,7 @@ main li a{
     text-decoration: none;
     font-style: italic;
     margin-top: 10px;
+    text-align: center;
 }
 #zen{
     margin-top: 15px;
