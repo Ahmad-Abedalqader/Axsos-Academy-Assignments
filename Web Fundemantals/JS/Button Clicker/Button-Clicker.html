@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Clicker</title>
+    <link rel="stylesheet" href="Button-Clicker.css">
+    <script src="Button-Clicker.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Dojonary</h1>
+        <input type="text" placeholder="Search">
+        <button id="btngo" onclick="log(this)">Login</button>
+    </header>
+    <main>
+        <div class="definition">
+            <div id="def1">
+                <aside class="noun">
+                    <h2>ninja</h2>
+                    <p style="font-style: italic;">noun</p>
+                    <p>plural: <span style="font-style: italic;">ninjas</span></p>
+                    <button onclick="alert('Ninja was liked')">13 likes</button>
+                </aside>
+                <p>
+                    A practitioner skilled in <span><a href="#">Japanese</a></span> art of <span><a
+                            href="#">Ninjutsu</a></span>
+                </p>
+            </div>
+            <div id="def2">
+                <aside class="noun">
+                    <h2>ninja</h2>
+                    <p style="font-style: italic;">noun</p>
+                    <p>plural: <span style="font-style: italic;">ninjas</span></p>
+                    <button onclick="alert('Ninja was liked')">37 likes</button>
+                </aside>
+                <p>
+                    A <span><a href="#">Programmer</a></span> who breaks down problem with <span><a
+                            href="#">zen</a></span>-like focus
+                </p>
+            </div>
+        </div>
+        <section>
+            <p>Dojonary is defined by <span id="you">YOU</span></p>
+            <button onclick="hide(this)">Add Definition</button>
+        </section>
+    </main>
+</body>
+
+</html>
