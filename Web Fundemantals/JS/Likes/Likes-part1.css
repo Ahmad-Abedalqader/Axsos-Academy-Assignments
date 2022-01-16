@@ -1,0 +1,37 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:cursive;
+}
+body{
+    width: 380px;
+    height: 160px;
+    border: 2px solid black;
+    margin: 0px auto;
+    margin-top: 30px;
+    padding: 20px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+}
+header button{
+    background-color: coral;
+    border: 2px solid black;
+    box-shadow: 2px 2px 2px black;
+    font-size: 18px;
+    width: 70px;
+}
+header p{
+    padding: 5px;
+    margin-left: 60px;
+    font-size: 18px;
+}
+body>p{
+    font-size: 18px;
+    margin-top: 50px;
+}
+h2{
+    font-weight: lighter;
+    font-size: 26px;
+}
