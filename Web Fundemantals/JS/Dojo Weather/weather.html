@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Weather</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+
+<body>
+    <header>
+        <h1>Dojo wheather</h1>
+        <a href="#" onclick="alert('Loading weather report...')">Burbank</a>
+        <a href="#" onclick="alert('Loading weather report...')">Chicago</a>
+        <a id="Dallas" href="#" onclick="alert('Loading weather report...')">Dallas</a>
+    </header>
+    <main>
+        <header>
+            <h2>San Jose</h2>
+            <p>Show temprature in</p>
+            <select onchange="change(this)">
+                <option value="°C">°C</option>
+                <option value="°F">°F</option>
+            </select>
+        </header>
+        <section>
+            <div class="day">
+                <h2>Today</h2>
+                <img src="some_rain.png" alt="rain pic.">
+                <p class="info">some rain</p>
+                <p>
+                    <span class="max" id="temp1">24</span>
+                    <span class="min" id="temp2">18</span>
+                </p>
+            </div>
+            <div class="day">
+                <h2>Tomorrow</h2>
+                <img src="some_sun.png" alt="sun pic.">
+                <p class="info">some sun</p>
+                <p>
+                    <span class="max" id="temp3">27</span>
+                    <span class="min" id="temp4">19</span>
+                </p>
+            </div>
+            <div class="day">
+                <h2>Friday</h2>
+                <img src="some_clouds.png" alt="cloud pic.">
+                <p class="info">some cloud</p>
+                <p>
+                    <span class="max" id="temp5">21</span>
+                    <span class="min" id="temp6">16</span>
+                </p>
+            </div>
+            <div class="day">
+                <h2>Saturday</h2>
+                <img src="some_sun.png" alt="sun pic.">
+                <p class="info">some sun</p>
+                <p>
+                    <span class="max" id="temp7">26</span>
+                    <span class="min" id="temp8">21</span>
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <img src="cookie.png" alt="cookie pic.">
+        <section>
+            <h3>stop! Cookie time</h3>
+            <p>We use cookies (sadly not the edible ones) to personalize <br> content and ads, to provide social media
+                features and to <br> analyse our traffic. <span><a href="#">Read more...</a></span></p>
+        </section>
+        <button onclick="remove()">I Accept</button>
+    </footer>
+    <script src="weather.js"></script>
+</body>
+
+</html>
