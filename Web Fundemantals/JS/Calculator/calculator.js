@@ -23,23 +23,24 @@ function setOP(op){
 }
 function calculate(){
     if (operator=='/'){
-        result=num1/num2;
+        result=parseInt(num1)/parseInt(num2);
     }
     else if (operator=='*'){
-        result=num1*num2;
+        result=parseInt(num1)*parseInt(num2);
     }
     else if (operator=='+'){
-        result=num1+num2;
+        result=parseInt(num1)+parseInt(num2);
     }
     else if (operator=='-'){
-        result=num1-num2;
+        result=parseInt(num1)-parseInt(num2);
     }
     display.innerText=result;
-    num1=0,num2=0;
+    num1=result.toString();
+    num2=0;
     operator='';
 }
 function clr(){
-    num1,num2=0;
+    num1=0,num2=0;
     operator='';
     display.innerText=0;
 }
