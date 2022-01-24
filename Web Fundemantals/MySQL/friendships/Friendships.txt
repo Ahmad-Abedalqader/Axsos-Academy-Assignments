@@ -1,0 +1,104 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema friendships_schema
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema friendships_schema
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `friendships_schema` DEFAULT CHARACTER SET utf8 ;
+USE `friendships_schema` ;
+
+-- -----------------------------------------------------
+-- Table `friendships_schema`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `friendships_schema`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `friendships_schema`.`friendships`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `friendships_schema`.`friendships` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `friend_id` INT NOT NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_users_has_users_users1_idx` (`friend_id` ASC) VISIBLE,
+  INDEX `fk_users_has_users_users_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_users_has_users_users`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `friendships_schema`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_users_has_users_users1`
+    FOREIGN KEY (`friend_id`)
+    REFERENCES `friendships_schema`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- ----------------------------------------------------------------------
+INSERT INTO users (first_name, last_name, created_at, Updated_at)
+VALUES	('Ahmad', 'Abedalqader', now(), now()), 
+		('Maher', 'Abedalqader', now(), now()),
+		('Musaab', 'Taffal', now(), now()),
+		('Mohammad', 'Omair', now(), now()),
+		('Sanad', 'Aboshamah', now(), now()),
+		('Hassan', 'Odeh', now(), now());
+SELECT * FROM users;
+-- ----------------------------------------------------------------------
+INSERT INTO friendships (user_id, friend_id)
+VALUES 	(1,2), (1,4), (1,6),
+		(2,1), (2,3), (2,5),
+        (3,2), (3,5),
+        (4,3),
+        (5,1), (5,6),
+        (6,2), (6,3);
+SELECT * FROM friendships;
+-- ----------------------------------------------------------------------
+SELECT users.first_name, users.last_name, friends.first_name AS friend_first_name, friends.last_name AS friend_last_name FROM users 
+JOIN friendships ON users.id=friendships.user_id
+LEFT JOIN users AS friends ON friends.id = friendships.friend_id;
+-- ----------------------------------------------------------------------
+SELECT friends.first_name AS friend_first_name, friends.last_name AS friend_last_name FROM users 
+JOIN friendships ON users.id=friendships.user_id
+LEFT JOIN users AS friends ON friends.id = friendships.friend_id
+WHERE user_id = 1;
+-- ----------------------------------------------------------------------
+SELECT COUNT(*) AS num_of_friendships FROM friendships;
+-- ----------------------------------------------------------------------
+SELECT user_id, users.first_name, users.last_name, count(user_id) AS num_of_friends
+FROM friendships
+JOIN users 
+ON users.id = friendships.user_id
+GROUP BY user_id
+ORDER BY num_of_friends DESC
+LIMIT 1;
+-- ----------------------------------------------------------------------
+SELECT friends.first_name AS friend_first_name, friends.last_name AS friend_last_name FROM users 
+JOIN friendships ON users.id=friendships.user_id
+LEFT JOIN users AS friends ON friends.id = friendships.friend_id
+WHERE user_id = 3
+ORDER BY friends.first_name;
+
+
+
