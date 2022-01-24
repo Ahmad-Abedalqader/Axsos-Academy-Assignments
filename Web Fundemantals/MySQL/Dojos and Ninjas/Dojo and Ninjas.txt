@@ -75,25 +75,25 @@ VALUES('Full Stack', now(), now());
 select * from dojos;
 
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('john', 'metz', 30, now(), now(), 7);
+VALUES('john', 'metz', 30, now(), now(), 4);
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('Ameed', 'Ahmad', 27, now(), now(), 7);
+VALUES('Ameed', 'Ahmad', 27, now(), now(), 4);
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('Hani', 'Mohammad', 30, now(), now(), 7);
+VALUES('Hani', 'Mohammad', 30, now(), now(), 4);
 
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('john', 'Cena', 41, now(), now(), 8);
+VALUES('john', 'Cena', 41, now(), now(), 5);
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('Michel', 'Freud', 33, now(), now(), 8);
+VALUES('Michel', 'Freud', 33, now(), now(), 5);
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('Sami', 'nezar', 25, now(), now(), 8);
+VALUES('Sami', 'nezar', 25, now(), now(), 5);
 
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('jack', 'Sparrow', 28, now(), now(), 9);
+VALUES('jack', 'Sparrow', 28, now(), now(), 6);
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('Fareed', 'Mustafa', 40, now(), now(), 9);
+VALUES('Fareed', 'Mustafa', 40, now(), now(), 6);
 INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id) 
-VALUES('Ahmad', 'Abedalqader', 27, now(), now(), 9);
+VALUES('Ahmad', 'Abedalqader', 27, now(), now(), 6);
 
 select * from ninjas
 WHERE dojo_id =4;
