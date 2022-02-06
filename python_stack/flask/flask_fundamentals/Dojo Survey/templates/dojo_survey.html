@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+</head>
+<style>
+    body {
+        margin: 0px auto;
+    }
+
+    form {
+        padding: 10px;
+        width: fit-content;
+        margin: auto;
+        border: 2px solid black;
+        padding: 20px;
+        margin-top: 20px;
+        background-color: lightcyan;
+    }
+
+    form * {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    textarea {
+        width: 350px;
+        height: 100px;
+    }
+
+    select {
+        width: 150px;
+        font-size: 18px;
+        margin-left: 40px;
+    }
+
+    input[type=text] {
+        width: 180px;
+        height: 25px;
+        font-size: 16px;
+        margin-left: 70px;
+    }
+
+    input[type=radio] {
+        margin-right: 10px;
+    }
+
+    span {
+        margin: 20px;
+    }
+
+    button {
+        background-color: skyblue;
+        border: 2px solid black;
+        box-shadow: 2px 2px 2px black;
+        text-align: center;
+        margin-left: 72%;
+        width: 100px;
+        height: 40px;
+    }
+</style>
+
+<body>
+    <form action="/result" method="post">
+        <p> Your name: <input type="text" name="name"></p>
+        <p>Please select your age range: <br>
+            <input type="radio" name="age" value="0-30">0 - 30
+            <input type="radio" name="age" value="31-60">31 - 60
+            <input type="radio" name="age" value="61-100">61 - 100
+        </p>
+        <p> Dojo Location:<span></span>
+            <select name="location">
+                <option value="palestine">palestine</option>
+                <option value="USA">USA</option>
+                <option value="Germany">Germany</option>
+                <option value="Australia">Australia</option>
+                <option value="Switzerland">Switzerland</option>
+            </select>
+        </p>
+        <p>Favorite Programming Languages:<br>
+            <input type="checkbox" id="C" name="fav_lang" value="C">
+            <label>C</label>
+            <input type="checkbox" id="Java" name="fav_lang" value="Java">
+            <label>Java</label>
+            <input type="checkbox" id="Python" name="fav_lang" value="Python">
+            <label>Python</label>
+            <input type="checkbox" id="PHP" name="fav_lang" value="PHP">
+            <label>PHP</label>
+        <p> Comment (optional):<br>
+            <textarea name="comment"></textarea>
+        </p>
+        <button type='submit'>Submit</button>
+    </form>
+    </main>
+</body>
+
+</html>

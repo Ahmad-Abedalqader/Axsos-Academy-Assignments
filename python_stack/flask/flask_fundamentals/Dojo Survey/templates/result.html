@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        main {
+            width: fit-content;
+            margin: 0px auto;
+            border: 2px solid black;
+            padding: 20px;
+            background-color: lightcyan;
+        }
+
+        button {
+            background-color: skyblue;
+            border: 2px solid black;
+            box-shadow: 2px 2px 2px black;
+            text-align: center;
+            margin-left: 55%;
+            width: 90px;
+            height: 35px;
+        }
+        p{
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h2><u>Submitted Info</u></h2>
+        <p><strong> Name:</strong> {{namehtml}}</p>
+        <p><strong>Age range:</strong> {{agehtml}}</p>
+        <p><strong>Dojo Location:</strong> {{locationhtml}}</p>
+        <p><strong>Favorite Language:</strong> {{favlanghtml}}</p>
+        <p><strong>Comment:</strong> {{commenthtml}}</p>
+        <form action="/">
+            <button type='submit'>Go back</button>
+        </form>
+    </main>
+</body>
