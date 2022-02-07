@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/survey.css' %}">
+</head>
+<body>
+    <form action="/result" method="post">
+        {% csrf_token %}
+        <p> Your name: <input type="text" name="name"></p>
+        <p>Please select your age range: <br>
+            <input type="radio" name="age" value="0-30">0 - 30
+            <input type="radio" name="age" value="31-60">31 - 60
+            <input type="radio" name="age" value="61-100">61 - 100
+        </p>
+        <p> Dojo Location:<span></span>
+            <select name="location">
+                <option value="palestine">palestine</option>
+                <option value="USA">USA</option>
+                <option value="Germany">Germany</option>
+                <option value="Australia">Australia</option>
+                <option value="Switzerland">Switzerland</option>
+            </select>
+        </p>
+        <p>Favorite Programming Languages:<br>
+            <input type="checkbox" id="C" name="fav_lang" value="C">
+            <label>C</label>
+            <input type="checkbox" id="Java" name="fav_lang" value="Java">
+            <label>Java</label>
+            <input type="checkbox" id="Python" name="fav_lang" value="Python">
+            <label>Python</label>
+            <input type="checkbox" id="PHP" name="fav_lang" value="PHP">
+            <label>PHP</label>
+        <p> Comment (optional):<br>
+            <textarea name="comment"></textarea>
+        </p>
+        <button type='submit'>Submit</button>
+    </form>
+    </main>
+</body>
+
+</html>

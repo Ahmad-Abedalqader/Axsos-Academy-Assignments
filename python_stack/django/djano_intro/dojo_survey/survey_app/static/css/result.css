@@ -1,0 +1,20 @@
+main {
+    width: fit-content;
+    margin: 0px auto;
+    border: 2px solid black;
+    padding: 20px;
+    background-color: lightcyan;
+}
+
+button {
+    background-color: skyblue;
+    border: 2px solid black;
+    box-shadow: 2px 2px 2px black;
+    text-align: center;
+    margin-left: 55%;
+    width: 90px;
+    height: 35px;
+}
+p{
+    font-size: 18px;
+}

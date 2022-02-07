@@ -1,0 +1,54 @@
+body {
+    margin: 0px auto;
+}
+
+form {
+    padding: 10px;
+    width: fit-content;
+    margin: auto;
+    border: 2px solid black;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: lightcyan;
+}
+
+form * {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 350px;
+    height: 100px;
+}
+
+select {
+    width: 150px;
+    font-size: 18px;
+    margin-left: 40px;
+}
+
+input[type=text] {
+    width: 180px;
+    height: 25px;
+    font-size: 16px;
+    margin-left: 70px;
+}
+
+input[type=radio] {
+    margin-right: 10px;
+}
+
+span {
+    margin: 20px;
+}
+
+button {
+    background-color: skyblue;
+    border: 2px solid black;
+    box-shadow: 2px 2px 2px black;
+    text-align: center;
+    margin-left: 72%;
+    width: 100px;
+    height: 40px;
+}
