@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/time.css' %}">
+</head>
+
+<body>
+    <main>
+        <h3>The current time and date:</h3>
+        <p>{{time}}</p>
+        <p>another way: <br>{{now}}</p>
+    </main>
+</body>
+
+</html>
