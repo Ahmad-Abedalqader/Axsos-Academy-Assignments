@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/ninja_gold.css' %}"> 
+</head>
+
+<body>
+    <header>
+        <p>Your Gold:</p>
+        <p class="gold"> {{request.session.gold}}</p>
+    </header>
+    <main>
+        <div>
+            <h2>Farm</h2>
+            <p>(earns 10-20 golds)</p>
+            <form action="/process_money" method="post" >
+                {% csrf_token %}
+                <input type="hidden" name="which" value="farm">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+        <div>
+            <h2>Cave</h2>
+            <p>(earns 5-10 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="which" value="cave">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+        <div>
+            <h2>House</h2>
+            <p>(earns 2-5 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="which" value="house">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+        <div>
+            <h2>Casino</h2>
+            <p>(earns/takes 0-50 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="which" value="casino">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>Activities:</p>
+        <section>
+            {% for i in request.session.activity %}
+            {% if "lost" in i %}
+            <p style="color: red">{{i}}</p>
+            {% else %}
+            <p style="color: #55a000">{{i}}</p>
+            {% endif %}
+            {% endfor %}
+        </section>
+    </footer>
+</body>
+
+</html>
