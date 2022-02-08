@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        body * {
+            margin: 10px 5px;
+            font-family: cursive;
+        }
+        main{
+            width: fit-content;
+            margin: auto;
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        button{
+            background-color: skyblue;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px black;
+            text-align: center;
+            width: 100px;
+            height: 30px;
+            font-size: 14px;
+        }
+        input[type=number] {
+            width: 200px;
+            height: 25px;
+            font-size: 15px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+        p{
+            font-size: 17px;
+        }
+        span{
+            margin-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h2>Counter value: {{request.session.counter}}</h2>
+        <h2>Actual visits: <span></span>{{request.session.visit}}</h2>
+        <form action="/add2" style="display: inline-block;">
+            <button type='submit'>Add 2 visits</button>
+        </form>
+        <form action="/destroy_session" style="display: inline-block;">
+            <button type='submit'>Reset</button>
+        </form>
+        <form action="/specify" , method="post">
+            {% csrf_token %}
+            <p>Specify your increment: <br> <input type="number" name="inc"> <button type="submit">Submit</button></p>
+        </form>
+    </main>
+</body>
+
+</html>
