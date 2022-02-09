@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/game.css' %}"> 
+</head>
+
+<body>
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I am thinking of a number between 1 and 100 <br> Take a guess!</p>
+    {% if request.session.guessed_number < request.session.random_number and request.session.counter != 5 %}
+    <div>
+        <h2>Too low!</h2>
+        <h3>Number of attempts: <br>{{request.session.counter}}</h3>
+    </div>
+    <form action="/guessed" method="post">
+        {% csrf_token %}
+        <input type="number" name="number">
+        <button type="submit">Submit</button>
+    </form>
+    {% elif request.session.guessed_number > request.session.random_number and request.session.counter != 5 %}
+    <div>
+        <h2>Too high!</h2>
+        <h3>Number of attempts: <br>{{request.session.counter}}</h3>
+    </div>
+    <form action="/guessed" method="post">
+        {% csrf_token %}
+        <input type="number" name="number">
+        <button type="submit">Submit</button>
+    </form>
+    {% elif request.session.guessed_number == request.session.random_number and request.session.counter != 5 %}
+    <div class="right">
+        <h2>{{request.session.random_number}} was the <br> number!</h2>
+        <h3>Number of attempts: <br>{{request.session.counter}}</h3>
+        <form action="/reset">
+        {% csrf_token %}
+        <button type="submit">Play again!</button>
+        </form>
+    </div>
+    <form action="/winners" method="post">
+        {% csrf_token %}
+        <p style="margin-bottom: 0px;"> Submit your name to see the Leaderboard </p>
+        <p>
+            <input type="text" name="win" placeholder="Your name" style="height: 30px;">
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+    {% endif %}
+    {% if request.session.counter == 5 %}
+    <div class="wrong">
+        <h2>Loser!!</h2>
+        <h2>{{request.session.random_number}} was the <br> number!</h2>
+        <h3>You reached the limit of attempts</h3>
+        <form action="/reset">
+        {% csrf_token %}
+        <button type="submit">Play again!</button>
+        </form>
+    </div>
+    {% endif %}
+    {% if not "counter" in request.session %}
+    <form action="/guessed" method="post">
+        {% csrf_token %}
+        <input type="number" name="number">
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+</body>
+
+</html>
