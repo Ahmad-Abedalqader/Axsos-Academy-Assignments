@@ -1,0 +1,19 @@
+from users_app.models import *
+User.objects.create(first_name="Ahmad",last_name="Abedalqader",email_address="abd_alqader@aa.com",age=20)
+User.objects.create(first_name="Ali",last_name="Ahmad",email_address="ali_ahmad@aa.com",age=25)
+User.objects.create(first_name="Sara",last_name="Any",email_address="sara_aa@aa.com",age=23)
+User.objects.all()
+User.objects.last()
+User.objects.first()
+
+u=User.objects.get(id=3)
+u.last_name="Pancakes"
+u.save()
+
+u = User.objects.get(id=2)
+u.delete()
+
+User.objects.all().order_by("first_name")
+
+User.objects.all().order_by("-first_name")
+
