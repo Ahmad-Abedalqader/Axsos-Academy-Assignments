@@ -1,0 +1,40 @@
+from dojo_ninjas_app.models import *
+
+Dojo.objects.create(name = "full_stack", city = "Ramallah", state="PS")
+Dojo.objects.create(name = "front_end", city = "Amman", state="JO")
+Dojo.objects.create(name = "back_end", city = "Berlin", state="DE")
+
+dojos = Dojo.objects.all()
+dojos.delete()
+
+Dojo.objects.create(name = "full_stack", city = "Ramallah", state="PS")
+Dojo.objects.create(name = "front_end", city = "Amman", state="JO")
+Dojo.objects.create(name = "back_end", city = "Berlin", state="DE")
+
+Ninja.objects.create(first_name = "Ahmad", last_name = "Abedalqader", dojo = Dojo.objects.get(id=4))
+Ninja.objects.create(first_name = "Maher", last_name = "Abedalkareem", dojo = Dojo.objects.get(id=4))
+Ninja.objects.create(first_name = "Musaab", last_name = "Taffal", dojo = Dojo.objects.get(id=4))
+
+Ninja.objects.create(first_name = "Mohammad", last_name = "Omair", dojo = Dojo.objects.get(id=5))
+Ninja.objects.create(first_name = "Sanad", last_name = "Abu Shamma", dojo = Dojo.objects.get(id=5))
+Ninja.objects.create(first_name = "Nezar", last_name = "Ali", dojo = Dojo.objects.get(id=5))
+
+Ninja.objects.create(first_name = "Naser", last_name = "Mahmnoud", dojo = Dojo.objects.get(id=6))
+Ninja.objects.create(first_name = "Oraib", last_name = "Awwad", dojo = Dojo.objects.get(id=6))
+Ninja.objects.create(first_name = "Eyad", last_name = "Ahmad", dojo = Dojo.objects.get(id=6))
+
+Dojo.objects.get(id = 4).ninjas.all()
+
+Dojo.objects.get(id = 5).ninjas.all()
+
+Dojo.objects.get(id = 6).ninjas.all()
+
+Ninja.objects.last().dojo
+
+in the models.py file added the following line to the Dojo class:
+desc = models.TextField(default="")
+
+Dojo.objects.create(name = "python and Java", city = "nablus", state="PS", desc = "pthon and java full satck class of palestine-Nablus")
+
+
+

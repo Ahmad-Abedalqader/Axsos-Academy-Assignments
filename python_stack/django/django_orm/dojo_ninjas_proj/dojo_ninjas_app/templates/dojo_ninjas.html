@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Ninjas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dojo_ninjas.css' %}">
+</head>
+
+<body>
+    <main>
+        <form action="/dojo" method="post">
+            {% csrf_token %}
+            <h2>Add a Dojo</h2>
+            <p>Name: <input type="text" name="name"></p>
+            <p>City: <input type="text" name="city"></p>
+            <p>State: <input type="text" name="state"></p>
+            <button type="submit"> Add </button>
+        </form>
+        <form action="/ninja" method="post">
+            {% csrf_token %}
+            <h2>Add a Ninja</h2>
+            <p>First Name: <input type="text" name="first_name"></p>
+            <p>Last Name: <input type="text" name="last_name"></p>
+            <p>
+                Dojo:
+                <select name="dojo_from_selsct"> Dojo:
+                    {% for dojo in dojos %}
+                    <option value="{{dojo.id}}">{{dojo.name}}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <button type="submit"> Add </button>
+        </form>
+    </main>
+    <section>
+        <h1>All the Dojos</h1>
+        {% for dojo in dojos %}
+        <div>
+            <p><strong>Ninjas at the {{dojo.name}}: -{{dojo.ninjas.count}}</strong></p>
+            <form action="/delete/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="del_dojo" value="{{dojo.id}}">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        <ul>
+            {% for ninja in dojo.ninjas.all %}
+            <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+
+    </section>
+</body>
+
+</html>
