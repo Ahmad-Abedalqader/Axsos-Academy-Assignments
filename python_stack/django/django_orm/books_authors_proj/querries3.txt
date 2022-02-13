@@ -1,0 +1,69 @@
+Book.objects.create(title = "C sharp")
+Book.objects.create(title = "Java")
+Book.objects.create(title = "Python")
+Book.objects.create(title = "PHP")
+Book.objects.create(title = "Ruby")
+
+Author.objects.create(first_name = "Jane", last_name = "Austen")
+Author.objects.create(first_name = "Emily", last_name = "Dickinson")
+Author.objects.create(first_name = "Fyodor", last_name = "Dostoevsky")
+Author.objects.create(first_name = "William", last_name = "Shakespeare")
+Author.objects.create(first_name = "Lau", last_name = "Tzu")
+
+book=Book.objects.get(title = "C sharp")
+book.title = "C#"
+book.save()
+
+an_author = Author.objects.get(id = 4)
+an_author.first_name = "Bill"
+an_author.save()
+
+first_author = Author.objects.first()
+first_book = Book.objects.first()
+second_book = Book.objects.get(id=2)
+first_author.books.add(first_book)
+first_author.books.add(second_book)
+
+second_author = Author.objects.get(id=2)
+first_book = Book.objects.first()
+second_book = Book.objects.get(id=2)
+third_book = Book.objects.get(id=3)
+second_author.books.add(first_book)
+second_author.books.add(second_book)
+second_author.books.add(third_book)
+
+
+third_author = Author.objects.get(id=3)
+first_book = Book.objects.first()
+second_book = Book.objects.get(id=2)
+third_book = Book.objects.get(id=3)
+forth_book = Book.objects.get(id=4)
+third_author.books.add(first_book)
+third_author.books.add(second_book)
+third_author.books.add(third_book)
+third_author.books.add(forth_book)
+
+forth_author = Author.objects.get(id=4)
+first_book = Book.objects.first()
+second_book = Book.objects.get(id=2)
+third_book = Book.objects.get(id=3)
+forth_book = Book.objects.get(id=4)
+fifth_book = Book.objects.last()
+forth_author.books.add(first_book)
+forth_author.books.add(second_book)
+forth_author.books.add(third_book)
+forth_author.books.add(forth_book)
+forth_author.books.add(fifth_book)
+
+third_book.authors.all()
+
+third_book.authors.remove(second_author)
+
+fifth_author = Author.objects.last()
+second_book.authors.add(fifth_author)
+
+third_author.books.all()
+
+fifth_book.authors.all()
+
+		
