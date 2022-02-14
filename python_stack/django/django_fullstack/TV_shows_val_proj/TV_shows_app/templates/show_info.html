@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Info</title>
+</head>
+<style>
+    body {
+        margin: 30px 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+    }
+
+    header {
+        text-align: end;
+        margin-bottom: 40px;
+    }
+</style>
+
+<body>
+    <header>
+        <p><a href="{% url 'all_shows' %}">Go Back</a></p>
+    </header>
+    <h2>TV Show {{show.id}}</h2>
+    <p>Title: {{show.title}}</p>
+    <p>Network: {{show.network}}</p>
+    <p>Release Date: {{show.release_date}}</p>
+    <p>Description: {{show.description}}</p>
+    <br><br><br>
+    <p>Last updated: {{show.updated_at}}</p>
+    <p>
+        <a href="{% url 'edit' show_id=show.id %}">Edit </a>|
+        <a href="{% url 'delete' show_id=show.id %}"> Delete</a>
+    </p>
+
+</body>
+
+</html>

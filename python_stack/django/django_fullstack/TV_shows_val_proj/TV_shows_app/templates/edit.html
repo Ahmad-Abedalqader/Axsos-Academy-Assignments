@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tv show Update</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/show_form.css' %}">
+</head>
+
+<body>
+    <header>
+        <p><a href="{% url 'all_shows' %}">Go Back</a></p>
+    </header>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="/shows/{{show.id}}/update" method="post">
+        {% csrf_token %}
+        <h2>Edit Show {{show.id}}</h2>
+        <p>
+            Title
+            <input type="text" name="title" value={{show.title}}>
+        </p>
+        <div>
+            <p>
+                Network
+                <input type="text" name="network" value={{show.network}}>
+            </p>
+            <p>
+                Release Date
+                <input type="date" name="rel_date" placeholder={{show.release_date}}>
+            </p>
+        </div>
+        <p>Description: <textarea name="desc" cols="40" rows="6">{{show.description}}</textarea></p>
+        <button type="submit">Update</button>
+        <p><a href="{% url 'show_info' show_id=show.id %}">Go to Show</a></p>
+    </form>
+</body>
+
+</html>

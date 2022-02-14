@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shows</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/all_shows.css' %}">
+
+</head>
+<body>
+    <h2>All shows</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Network</th>
+            <th>Release Date</th>
+            <th>Actions</th>
+        </tr>
+        {% for show in shows %}
+        <tr>
+            <td>{{show.id}}</td>
+            <td>{{show.title}}</td>
+            <td>{{show.network}}</td>
+            <td>{{show.release_date}}</td>
+            <td>
+                <a href="{% url 'show_info' show_id=show.id %}">Show </a> |
+                <a href="{% url 'edit' show_id=show.id %}"> Edit </a>|
+                <a href="{% url 'delete' show_id=show.id %}"> Delete </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'new_show' %}">Add a New Show</a>
+</body>
+</html>
