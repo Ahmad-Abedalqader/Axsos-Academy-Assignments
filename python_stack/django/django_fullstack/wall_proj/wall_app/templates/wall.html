@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wall</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<style>
+    body {
+        padding: 10px;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #198754;
+        color: white;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+    }
+
+    button {
+        width: fit-content;
+        margin: -10px 0px 10px;
+    }
+
+    a {
+        margin-left: 30px;
+        font-size: 18px;
+        color: #0dcaf0;
+        text-decoration: none;
+    }
+
+    h4 {
+        margin-top: 20px;
+    }
+
+    .comment {
+        margin-left: 40px;
+    }
+    .col-6{
+        padding: 20px;
+    }
+    textarea{
+        margin-bottom: 20px;
+    }
+</style>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <header>
+                <h2>Coding dojo wall</h2>
+                <h5>Welcome {{user.first_name}} {{user.last_name}} <a href="logout/">Log out</a></h5>
+            </header>
+        </div>
+    </div>
+    <div class="container sm">
+        <div class="row justify-content-center">
+            <div class="col-6 border">
+                <form action="post/" method="post">
+                    {% csrf_token %}
+                    <label for="message">Post a message</label>
+                    <textarea name="message" id="message" cols="30" rows="4" style="width: 520px;"></textarea>
+                    <button type="submit" class="btn btn-success btn-sm" style="background-color: #0d6efd;">Post a message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% for message in messages %}
+    <div class="container-sm">
+        <div class="row justify-content-center">
+            <div class="col-6 border">
+                <h5>{{message.user.first_name}} {{message.user.last_name}} - {{message.created_at}}</h5>
+                <p>{{message.message}}</p>
+                {% if request.session.userid == message.user.id %}
+                <form action="del_post/" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="message_id" value={{message.id}}>
+                    <button type="submit" class="btn btn-danger btn-sm">Delete post</button>
+                </form>
+                {% endif %}
+                {% for comment in message.comments.all %}
+                <div class="comment">
+                    <h6>{{comment.user.first_name}} {{comment.user.last_name}} - {{comment.created_at}}</h6>
+                    <p>{{comment.comment}}</p>
+                    {% if request.session.userid == comment.user.id %}
+                    <form action="del_comment/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="comment_id" value={{comment.id}}>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="comment">
+                    <form action="comment/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="message_id" value={{message.id}}>
+                        <label for="comment">Add a comment</label>
+                        <textarea name="comment" id="comment" cols="26" rows="1" style="width: 470px;"></textarea>
+                        <button type="submit" class="btn btn-success btn-sm">Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
